@@ -193,3 +193,220 @@ nav a{
   height:500px;
   object-fit:cover;
 }
+
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 1024px) {
+  header{
+    padding:15px 30px;
+  }
+  
+  .logo{
+    font-size:11px;
+  }
+  
+  nav a{
+    margin-left:15px;
+    font-size:12px;
+  }
+  
+  #hero{
+    padding:100px 40px;
+  }
+  
+  .hero-content{
+    gap:30px;
+  }
+  
+  .hero-text h1{
+    font-size:36px;
+  }
+  
+  .project{
+    height:70vh;
+  }
+  
+  #project-page{
+    padding:100px 40px;
+  }
+  
+  .project-header h1{
+    font-size:28px;
+  }
+  
+  .gallery img{
+    height:350px;
+  }
+}
+
+@media (max-width: 768px) {
+  header{
+    padding:12px 20px;
+    flex-wrap:wrap;
+  }
+  
+  .logo{
+    font-size:10px;
+    letter-spacing:0.5px;
+    flex:1;
+  }
+  
+  nav{
+    width:100%;
+    margin-top:10px;
+    display:flex;
+    justify-content:flex-start;
+  }
+  
+  nav a{
+    margin-left:15px;
+    font-size:11px;
+  }
+  
+  #hero{
+    min-height:auto;
+    padding:80px 20px;
+  }
+  
+  .hero-content{
+    grid-template-columns:1fr;
+    gap:30px;
+    max-width:100%;
+  }
+  
+  .hero-text h1{
+    font-size:28px;
+    margin-bottom:15px;
+  }
+  
+  .hero-text p{
+    font-size:14px;
+  }
+  
+  .project{
+    height:50vh;
+    min-height:300px;
+  }
+  
+  .overlay{
+    padding:30px;
+  }
+  
+  .overlay h2{
+    font-size:32px;
+  }
+  
+  .overlay p{
+    font-size:12px;
+  }
+  
+  #project-page{
+    padding:80px 20px;
+    max-width:100%;
+  }
+  
+  .back{
+    font-size:13px;
+  }
+  
+  .project-header h1{
+    font-size:22px;
+  }
+  
+  .project-header p{
+    font-size:13px;
+  }
+  
+  .gallery{
+    gap:20px;
+  }
+  
+  .gallery img{
+    height:250px;
+  }
+}
+
+@media (max-width: 480px) {
+  header{
+    padding:10px 15px;
+  }
+  
+  .logo{
+    font-size:9px;
+    letter-spacing:0px;
+  }
+  
+  nav a{
+    margin-left:12px;
+    font-size:10px;
+  }
+  
+  #hero{
+    padding:60px 15px;
+  }
+  
+  .hero-content{
+    gap:20px;
+  }
+  
+  .hero-text h1{
+    font-size:22px;
+  }
+  
+  .hero-text p{
+    font-size:13px;
+    line-height:1.5;
+  }
+  
+  .project{
+    height:40vh;
+    min-height:250px;
+  }
+  
+  .overlay{
+    padding:20px;
+    justify-content:center;
+  }
+  
+  .overlay h2{
+    font-size:24px;
+  }
+  
+  .overlay p{
+    font-size:11px;
+  }
+  
+  .project:hover img{
+    transform:scale(1.02);
+  }
+  
+  #project-page{
+    padding:60px 15px;
+  }
+  
+  .back{
+    font-size:12px;
+    margin-bottom:30px;
+  }
+  
+  .project-header h1{
+    font-size:18px;
+  }
+  
+  .project-header p{
+    font-size:12px;
+  }
+  
+  .gallery{
+    gap:15px;
+  }
+  
+  .gallery img{
+    height:200px;
+  }
+  
+  #transition img{
+    width:80px;
+  }
+}

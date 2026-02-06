@@ -3,6 +3,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Detect mobile
+const isMobile = () => window.innerWidth <= 768;
+const isTablet = () => window.innerWidth <= 1024 && window.innerWidth > 768;
+
 
 /* DATA */
 
@@ -31,28 +35,49 @@ const projects = {
 
 /* HERO */
 
-gsap.from(".hero-content",{
-  opacity:0,
-  y:60,
-  duration:1.5
-});
+if (!isMobile()) {
+  gsap.from(".hero-content",{
+    opacity:0,
+    y:60,
+    duration:1.5
+  });
+} else {
+  // Simpler animation for mobile
+  gsap.from(".hero-content",{
+    opacity:0,
+    y:30,
+    duration:1
+  });
+}
 
 
 /* PROJECT SCROLL */
 
-document.querySelectorAll(".project").forEach(p=>{
-
-  gsap.from(p,{
-    scrollTrigger:{
-      trigger:p,
-      start:"top 80%"
-    },
-    opacity:0,
-    y:80,
-    duration:1.2
+if (!isMobile()) {
+  document.querySelectorAll(".project").forEach(p=>{
+    gsap.from(p,{
+      scrollTrigger:{
+        trigger:p,
+        start:"top 80%"
+      },
+      opacity:0,
+      y:80,
+      duration:1.2
+    });
   });
-
-});
+} else {
+  // Lighter scroll animations for mobile
+  document.querySelectorAll(".project").forEach(p=>{
+    gsap.from(p,{
+      scrollTrigger:{
+        trigger:p,
+        start:"top 90%"
+      },
+      opacity:0,
+      duration:0.8
+    });
+  });
+}
 
 
 /* OPEN PROJECT */
@@ -60,6 +85,7 @@ document.querySelectorAll(".project").forEach(p=>{
 const transition = document.getElementById("transition");
 const page = document.getElementById("project-page");
 const main = document.querySelector("main");
+const transitionDuration = isMobile() ? 500 : 700; // Faster transition on mobile
 
 document.querySelectorAll(".project").forEach(p=>{
 
@@ -78,7 +104,7 @@ document.querySelectorAll(".project").forEach(p=>{
 
       transition.classList.remove("active");
 
-    },700);
+    }, transitionDuration);
 
   });
 
