@@ -626,9 +626,9 @@ const Project = () => {
                       className={
                         sloterdijkCarouselIsSmaller || thesisCarouselIsSmaller
                           ? thesisCarouselIsSmaller
-                            ? "md:w-[85%] md:mx-auto"
-                            : "md:w-[70%] md:mx-auto"
-                          : undefined
+                            ? "md:w-full md:max-w-[1100px] md:mx-auto"
+                            : "md:w-full md:max-w-[980px] md:mx-auto"
+                          : "md:w-full md:max-w-[1180px] md:mx-auto"
                       }
                       showCaptions={thesisCarouselIsSmaller ? false : !isRenders}
                       tightFooter={isKlimaatSchema}
