@@ -6,7 +6,7 @@ export const siteConfig = {
   // ===========================================
   // JOUW NAAM - Dit verschijnt in de header
   // ===========================================
-  name: "MILAN BUITINK",
+  name: "",
   
   // ===========================================
   // NAVIGATIE LINKS
@@ -24,10 +24,10 @@ export const siteConfig = {
     portrait: new URL('../../images/milan-portret.webp', import.meta.url).href,
     
     // Je titel/rol
-    title: "Architect & Ingenieur",
+    title: "",
     
     // Je locatie
-    location: "Nijkerk, Nederland",
+    location: "",
     // Je biografie (meerdere paragrafen)
     bio: [
       "Welkom op mijn portfolio. Ik ben een student Architectuur en heb daarnaast mijn diploma Bouwkunde behaald. In dit portfolio presenteer ik een selectie van mijn werk en ontwikkeling binnen het vakgebied.",
