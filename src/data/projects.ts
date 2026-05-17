@@ -196,9 +196,9 @@ export const projects: Project[] = [
       studietijd: "7 weken",
       cijfer: "8.0",
     },
-    thumbnail: new URL('../../images/timbertunes/timbertunes.webp', import.meta.url).href,
+ thumbnail: new URL('../../images/timbertunes/timbertunez.webp', import.meta.url).href,
     images: [
-      { src: new URL('../../images/timbertunes/timbertunes.webp', import.meta.url).href, alt: "Stadsgezicht" },
+      { src: new URL('../../images/timbertunes/timbertunez.webp', import.meta.url).href, alt: "Stadsgezicht" },
       { src: new URL('../../images/timbertunes/ttvisie.png', import.meta.url).href, alt: "Visie", width: "half" },
       { 
         src: [
