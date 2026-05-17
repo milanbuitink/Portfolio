@@ -12,10 +12,10 @@ const About = () => {
 
       <main className="pb-32 px-6 md:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-start">
             {/* Portrait */}
-            <div className="flex flex-col pt-8 lg:pt-16">
-              <div className="relative aspect-[3/4] overflow-hidden max-w-[320px] lg:max-w-[360px] w-full">
+            <div className="flex flex-col pt-12 lg:pt-20">
+              <div className="relative aspect-[3/4] overflow-hidden max-w-[320px] lg:max-w-[360px] w-full mx-auto lg:mx-0">
                 <OptimizedImage
                   src={about.portrait}
                   alt={siteConfig.name}
@@ -27,7 +27,7 @@ const About = () => {
             </div>
 
             {/* Content (right column) */}
-            <div className="py-8 lg:py-16 flex flex-col">
+            <div className="pt-12 lg:pt-20 pb-12 flex flex-col">
               {/* Titel & Locatie */}
               <div className="mb-12">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4">
@@ -40,7 +40,7 @@ const About = () => {
               </div>
 
               {/* Bio */}
-              <div className="space-y-6 mb-16">
+              <div className="space-y-6 mb-20">
                 {about.bio.map((paragraph, index) => (
                   <p
                     key={index}
@@ -68,7 +68,7 @@ const About = () => {
           </div>
 
           {/* Contact + skills row */}
-          <div className="mt-12 grid gap-8 md:grid-cols-2 items-start">
+          <div className="mt-16 md:mt-20 grid gap-10 md:grid-cols-2 items-start">
             <div>
               <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
                 Contact
