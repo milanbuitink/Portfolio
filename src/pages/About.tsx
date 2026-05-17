@@ -3,83 +3,18 @@ import OptimizedImage from "@/components/OptimizedImage";
 import { getBlurPlaceholder } from "@/lib/blur-utils";
 import { siteConfig } from "@/data/siteConfig";
 
+const About = () => {
+  const { about } = siteConfig;
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+
       <main className="pb-32 px-6 md:px-8">
-        <div className="w-full max-w-5xl mx-auto">
-          <div className="mx-auto bg-card border border-border rounded-xl overflow-hidden grid md:grid-cols-2 md:aspect-square">
-            {/* Left: Portrait (fills left half) */}
-            <div className="relative hidden md:block">
-              <OptimizedImage
-                src={about.portrait}
-                alt={siteConfig.name}
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                containerClassName="absolute inset-0"
-                blurDataURL={getBlurPlaceholder(about.portrait)}
-              />
-            </div>
-
-            {/* Right: Content */}
-            <div className="p-6 md:p-10 flex flex-col h-full">
-              <div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-2">
-                  {siteConfig.name}
-                </h1>
-                <p className="text-sm text-muted-foreground mb-4">{about.title}</p>
-                <p className="text-xs text-muted-foreground mb-6">{about.location}</p>
-              </div>
-
-              <div className="prose max-w-none text-[0.9rem] text-muted-foreground leading-relaxed overflow-auto mb-6">
-                {about.bio.map((paragraph, index) => (
-                  <p key={index} className="mb-4 last:mb-0">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-
-              <div className="mt-auto">
-                <div className="mb-6">
-                  <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Softwarevaardigheden</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <h4 className="text-sm font-medium mb-2">Professioneel</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {['Archicad', 'Adobe Photoshop', 'Lumion'].map((s) => (
-                          <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium mb-2">Gevorderd</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {['SketchUp', 'Adobe InDesign', 'Twinmotion', 'AutoCAD', 'Autodesk Inventor'].map((s) => (
-                          <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Contact</h3>
-                  <div className="space-y-1">
-                    <a href={`mailto:${about.contact.email}`} className="block text-[0.9rem] text-muted-foreground hover:opacity-60 transition-opacity duration-200">
-                      {about.contact.email}
-                    </a>
-                    {about.contact.phone && (
-                      <a href={`tel:${about.contact.phone.replace(/\s+/g, '')}`} className="block text-[0.9rem] text-muted-foreground hover:opacity-60 transition-opacity duration-200">
-                        {about.contact.phone}
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile portrait below content for small screens */}
-            <div className="relative md:hidden">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
+            {/* Portrait + contact (left column) */}
+            <div className="flex flex-col pt-8 lg:pt-16">
               <div className="relative aspect-[3/4] overflow-hidden">
                 <OptimizedImage
                   src={about.portrait}
@@ -89,9 +24,9 @@ import { siteConfig } from "@/data/siteConfig";
                   blurDataURL={getBlurPlaceholder(about.portrait)}
                 />
               </div>
-            </div>
-          </div>
-        </div>
+
+              {/* Contact moved under portrait and pushed to bottom */}
+              <div className="mt-auto pt-6">
                 <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
                   Contact
                 </h2>
@@ -112,6 +47,78 @@ import { siteConfig } from "@/data/siteConfig";
                   )}
                 </div>
               </div>
+            </div>
+
+            {/* Content (right column) */}
+            <div className="py-8 lg:py-16 flex flex-col">
+              {/* Titel & Locatie */}
+              <div className="mb-12">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4">
+                  {siteConfig.name}
+                </h1>
+                <p className="text-[0.81rem] text-muted-foreground">{about.title}</p>
+                <p className="text-[0.63rem] text-muted-foreground mt-1">
+                  {about.location}
+                </p>
+              </div>
+
+              {/* Bio */}
+              <div className="space-y-6 mb-16">
+                {about.bio.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              {/* Softwarevaardigheden */}
+              <div className="mb-12 mt-auto">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Softwarevaardigheden</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-sm font-medium mb-2">Professioneel</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {['Archicad', 'Adobe Photoshop', 'Lumion'].map((s) => (
+                        <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm font-medium mb-2">Gevorderd</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {['SketchUp', 'Adobe InDesign', 'Twinmotion', 'AutoCAD', 'Autodesk Inventor'].map((s) => (
+                        <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+
+              {/* Clients */}
+              {about.clients && about.clients.length > 0 && (
+                <div className="mb-16">
+                  <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
+                    Selected Clients
+                  </h2>
+                  <p className="text-[0.72rem] text-muted-foreground">
+                    {about.clients.join(" · ")}
+                  </p>
+                </div>
+              )}
+
+              {/* Werkervaring & Opleidingen are shown below as two columns */}
+
+              {/* contact moved to left column above */}
             </div>
           </div>
         </div>
