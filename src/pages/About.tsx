@@ -12,10 +12,10 @@ const About = () => {
 
       <main className="pb-32 px-6 md:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
-            {/* Portrait + contact (left column) */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+            {/* Portrait */}
             <div className="flex flex-col pt-8 lg:pt-16">
-              <div className="relative aspect-[3/4] overflow-hidden">
+              <div className="relative aspect-[3/4] overflow-hidden max-w-[320px] lg:max-w-[360px] w-full">
                 <OptimizedImage
                   src={about.portrait}
                   alt={siteConfig.name}
@@ -23,29 +23,6 @@ const About = () => {
                   containerClassName="absolute inset-0"
                   blurDataURL={getBlurPlaceholder(about.portrait)}
                 />
-              </div>
-
-              {/* Contact moved under portrait and pushed to bottom */}
-              <div className="mt-auto pt-6">
-                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
-                  Contact
-                </h2>
-                <div className="space-y-2">
-                  <a
-                    href={`mailto:${about.contact.email}`}
-                    className="block text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground hover:opacity-60 transition-opacity duration-300"
-                  >
-                    {about.contact.email}
-                  </a>
-                  {about.contact.phone && (
-                    <a
-                      href={`tel:${about.contact.phone.replace(/\s+/g, "")}`}
-                      className="block text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground hover:opacity-60 transition-opacity duration-300"
-                    >
-                      {about.contact.phone}
-                    </a>
-                  )}
-                </div>
               </div>
             </div>
 
@@ -74,36 +51,6 @@ const About = () => {
                 ))}
               </div>
 
-              {/* Softwarevaardigheden */}
-              <div className="mb-12 mt-8 lg:mt-10 max-w-[560px] ml-auto">
-                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Softwarevaardigheden</h2>
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8">
-                  <div className="min-w-0">
-                    <h3 className="text-sm font-medium mb-2">Professioneel</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {['Archicad', 'Adobe Photoshop', 'Lumion'].map((s) => (
-                        <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="min-w-0">
-                    <h3 className="text-sm font-medium mb-2">Gevorderd</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {['SketchUp', 'Adobe InDesign', 'Twinmotion', 'AutoCAD', 'Autodesk Inventor'].map((s) => (
-                        <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              
-
               {/* Clients */}
               {about.clients && about.clients.length > 0 && (
                 <div className="mb-16">
@@ -117,8 +64,58 @@ const About = () => {
               )}
 
               {/* Werkervaring & Opleidingen are shown below as two columns */}
+            </div>
+          </div>
 
-              {/* contact moved to left column above */}
+          {/* Contact + skills row */}
+          <div className="mt-12 grid gap-8 md:grid-cols-2 items-start">
+            <div>
+              <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
+                Contact
+              </h2>
+              <div className="space-y-2">
+                <a
+                  href={`mailto:${about.contact.email}`}
+                  className="block text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground hover:opacity-60 transition-opacity duration-300"
+                >
+                  {about.contact.email}
+                </a>
+                {about.contact.phone && (
+                  <a
+                    href={`tel:${about.contact.phone.replace(/\s+/g, "")}`}
+                    className="block text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground hover:opacity-60 transition-opacity duration-300"
+                  >
+                    {about.contact.phone}
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Softwarevaardigheden</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-sm font-medium mb-2">Professioneel</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {['Archicad', 'Adobe Photoshop', 'Lumion'].map((s) => (
+                      <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-medium mb-2">Gevorderd</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {['SketchUp', 'Adobe InDesign', 'Twinmotion', 'AutoCAD', 'Autodesk Inventor'].map((s) => (
+                      <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
