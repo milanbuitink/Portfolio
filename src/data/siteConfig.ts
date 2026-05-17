@@ -6,7 +6,7 @@ export const siteConfig = {
   // ===========================================
   // JOUW NAAM - Dit verschijnt in de header
   // ===========================================
-  name: "",
+  name: "MILAN BUITINK",
   
   // ===========================================
   // NAVIGATIE LINKS
@@ -24,10 +24,10 @@ export const siteConfig = {
     portrait: new URL('../../images/milan-portret.webp', import.meta.url).href,
     
     // Je titel/rol
-    title: "",
+    title: "Architect & Ingenieur",
     
     // Je locatie
-    location: "",
+    location: "Nijkerk, Nederland",
     // Je biografie (meerdere paragrafen)
     bio: [
       "Welkom op mijn portfolio. Ik ben een student Architectuur en heb daarnaast mijn diploma Bouwkunde behaald. In dit portfolio presenteer ik een selectie van mijn werk en ontwikkeling binnen het vakgebied.",
@@ -51,8 +51,7 @@ export const siteConfig = {
         role: "Eerste verkoopmedewerker",
         company: "Boni Supermarkt, Nijkerk",
         description: [
-          "Zelfstandig verantwoordelijk voor het aansturen van het team tijdens avond- en zondagdiensten.",
-          "Operationele leiding op de werkvloer.",
+  
         ],
       },
       {

@@ -450,8 +450,7 @@ export const projects: Project[] = [
     year: "2023",
     category: "MSc4",
     subtext: [
-      "Dit afstudeerproject onderzoekt de wisselwerking tussen beeld, compositie en abstractie. De serie is opgezet als een visuele studie waarin perspectief, ritme en contrast samen een eigen atmosferische logica vormen.",
-      "Bij de selectie en ordening van de beelden heb ik gezocht naar een reeks die inhoudelijk en visueel op elkaar reageert. Zo ontstaat een portfolio-onderdeel dat niet alleen losse beelden toont, maar ook de samenhang binnen het project laat zien.",
+      
       "Dit project maakt deel uit van een groter stedenbouwkundig masterplan waarin het concept van bouwmaterialen als grondstoffen een centrale rol speelt. Binnen dit masterplan wordt het landschap van Midden-Delfland benaderd als een productief systeem dat materialen kan leveren voor de gebouwde omgeving. Terwijl het masterplan zich richt op de ontwikkeling van nieuwe materiaalstromen, neemt dit project een complementaire positie in door te onderzoeken hoe bestaande bouwmaterialen en constructies zo maximaal mogelijk kunnen worden hergebruikt.",
 
       "In plaats van een gebouw volledig op te trekken uit nieuw geproduceerde materialen, vertrekt het ontwerp vanuit de bestaande industriële hal. De fundering, de beganegrondvloer en de staalconstructie blijven behouden en vormen de basis voor de verdere ontwikkeling. Boven op deze structuur worden nieuwe bouwvolumes toegevoegd met behulp van hergebruikte stalen elementen afkomstig uit donorconstructies, gecombineerd met lichte houten vloeren en biobased isolatiematerialen. Waar mogelijk worden ook gevelelementen en aanvullende bouwonderdelen samengesteld uit hergebruikte materialen uit de directe omgeving.",
@@ -514,6 +513,7 @@ export const projects: Project[] = [
           new URL('../../images/graduation/1.png', import.meta.url).href,
           new URL('../../images/graduation/2.png', import.meta.url).href,
           new URL('../../images/graduation/3.png', import.meta.url).href,
+          new URL('../../images/graduation/4.png', import.meta.url).href,
         ],
         alt: "Proto 1 t/m 3",
         captions: [""],

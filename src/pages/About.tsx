@@ -12,10 +12,10 @@ const About = () => {
 
       <main className="pb-32 px-6 md:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
             {/* Portrait */}
-            <div className="flex flex-col pt-12 lg:pt-20">
-              <div className="relative aspect-[3/4] overflow-hidden max-w-[320px] lg:max-w-[360px] w-full mx-auto lg:mx-0">
+            <div className="relative self-start pt-8 lg:pt-16">
+              <div className="relative aspect-[3/4] overflow-hidden">
                 <OptimizedImage
                   src={about.portrait}
                   alt={siteConfig.name}
@@ -26,8 +26,8 @@ const About = () => {
               </div>
             </div>
 
-            {/* Content (right column) */}
-            <div className="pt-12 lg:pt-20 pb-12 flex flex-col">
+            {/* Content */}
+            <div className="py-8 lg:py-16">
               {/* Titel & Locatie */}
               <div className="mb-12">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4">
@@ -40,7 +40,7 @@ const About = () => {
               </div>
 
               {/* Bio */}
-              <div className="space-y-6 mb-20">
+              <div className="space-y-6 mb-16">
                 {about.bio.map((paragraph, index) => (
                   <p
                     key={index}
@@ -50,6 +50,36 @@ const About = () => {
                   </p>
                 ))}
               </div>
+
+              {/* Softwarevaardigheden */}
+              <div className="mb-12">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Softwarevaardigheden</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-sm font-medium mb-2">Professioneel</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {['Archicad', 'Adobe Photoshop', 'Lumion'].map((s) => (
+                        <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm font-medium mb-2">Gevorderd</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {['SketchUp', 'Adobe InDesign', 'Twinmotion', 'AutoCAD', 'Autodesk Inventor'].map((s) => (
+                        <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
 
               {/* Clients */}
               {about.clients && about.clients.length > 0 && (
@@ -64,56 +94,27 @@ const About = () => {
               )}
 
               {/* Werkervaring & Opleidingen are shown below as two columns */}
-            </div>
-          </div>
 
-          {/* Contact + skills row */}
-          <div className="mt-16 md:mt-20 grid gap-10 md:grid-cols-2 items-start">
-            <div>
-              <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
-                Contact
-              </h2>
-              <div className="space-y-2">
-                <a
-                  href={`mailto:${about.contact.email}`}
-                  className="block text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground hover:opacity-60 transition-opacity duration-300"
-                >
-                  {about.contact.email}
-                </a>
-                {about.contact.phone && (
+              {/* Contact */}
+              <div>
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
+                  Contact
+                </h2>
+                <div className="space-y-2">
                   <a
-                    href={`tel:${about.contact.phone.replace(/\s+/g, "")}`}
+                    href={`mailto:${about.contact.email}`}
                     className="block text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground hover:opacity-60 transition-opacity duration-300"
                   >
-                    {about.contact.phone}
+                    {about.contact.email}
                   </a>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Softwarevaardigheden</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-sm font-medium mb-2">Professioneel</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Archicad', 'Adobe Photoshop', 'Lumion'].map((s) => (
-                      <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-sm font-medium mb-2">Gevorderd</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['SketchUp', 'Adobe InDesign', 'Twinmotion', 'AutoCAD', 'Autodesk Inventor'].map((s) => (
-                      <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
+                  {about.contact.phone && (
+                    <a
+                      href={`tel:${about.contact.phone.replace(/\s+/g, "")}`}
+                      className="block text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground hover:opacity-60 transition-opacity duration-300"
+                    >
+                      {about.contact.phone}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
