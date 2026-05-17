@@ -19,7 +19,7 @@ const HeroLoader = ({ onReveal, onComplete }: HeroLoaderProps) => {
   const images = useMemo(
     () => [
       "/animation/files/img/axomolenhof.webp",
-      "/animation/files/img/Timbertunes.webp",
+      new URL("../../images/timbertunes/timbertunes.webp", import.meta.url).href,
       "/animation/files/img/graduationaxo.webp",
       "/animation/files/img/sloterdijkaxo.webp",
     ],

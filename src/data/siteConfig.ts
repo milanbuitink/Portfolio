@@ -32,7 +32,7 @@ export const siteConfig = {
     bio: [
       "Welkom op mijn portfolio. Ik ben een student Architectuur en heb daarnaast mijn diploma Bouwkunde behaald. In dit portfolio presenteer ik een selectie van mijn werk en ontwikkeling binnen het vakgebied.",
       "Mijn passie ligt bij het ontwerpen van gebouwen die niet alleen esthetisch sterk zijn, maar ook technisch doordacht. Dankzij mijn studieachtergrond heb ik zowel op het gebied van ontwerp als bouwtechniek brede kennis opgebouwd. Deze combinatie stelt mij in staat om ontwerpen te maken die niet alleen visueel aantrekkelijk zijn, maar ook uitvoerbaar en realistisch.",
-      "Ik hecht veel waarde aan de technische haalbaarheid van mijn ontwerpen. Daarnaast ben ik sterk geïnteresseerd in duurzaamheid en innovatie. Ik zoek continu naar manieren om met mijn werk bij te dragen aan een toekomstbestendige gebouwde omgeving, waarin verantwoord omgaan met klimaat en materialen centraal staat.",
+      "Naast de technische haalbaarheid van mijn ontwerpen ben ik sterk geïnteresseerd in duurzaamheid en innovatie. Tijdens mijn studie zoek continu naar manieren om met mijn werk bij te dragen aan een toekomstbestendige gebouwde omgeving, waarin verantwoord omgaan met klimaat en materialen centraal staat.",
     ],
     
     // Je specialisaties/focus gebieden
