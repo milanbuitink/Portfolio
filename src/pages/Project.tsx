@@ -477,6 +477,10 @@ const Project = () => {
               Array.isArray(image.src) &&
               typeof firstSrc === "string" &&
               firstSrc.toLowerCase().includes("graduation/a");
+            const isGraduationTopThreeCarousel =
+              project.slug === "graduation" &&
+              Array.isArray(image.src) &&
+              index < 3;
             const isMolenhofSwipeCarousel = isMolenhofSequence || isMolenhofASequence || isMolenhofRenders;
             const isDetails = typeof firstSrc === "string" && (firstSrc.includes("detail1") || firstSrc.includes("detail2") || firstSrc.includes("detail3"));
             const isRenders = typeof firstSrc === "string" && (firstSrc.includes("render1") || firstSrc.includes("render2") || firstSrc.includes("render3") || firstSrc.includes("render4") || firstSrc.includes("render5"));
@@ -518,6 +522,8 @@ const Project = () => {
               ? "w-full"
               : isMolenhofRenders
                 ? "w-[85%] md:w-[85%] mx-auto"
+              : isGraduationTopThreeCarousel
+                ? "w-full md:w-full md:max-w-[1280px] md:mx-auto"
               : isGraduationABC
                 ? "w-[50%] md:w-[50%] mx-auto"
               : isMolenhofDSequence
@@ -629,13 +635,13 @@ const Project = () => {
                             ? "md:w-full md:max-w-[1100px] md:mx-auto"
                             : "md:w-full md:max-w-[980px] md:mx-auto"
                           : "md:w-full md:max-w-[1180px] md:mx-auto",
-                        isGraduationABC ? "md:px-20" : "",
+                        (isGraduationABC || isGraduationTopThreeCarousel) ? "md:px-20" : "",
                       ]
                         .filter(Boolean)
                         .join(" ")}
                       showCaptions={thesisCarouselIsSmaller ? false : !isRenders}
                       tightFooter={isKlimaatSchema}
-                      arrowsOutside={sloterdijkCarouselUsesOutsideArrows || isKlimaatSchema || isRenders || isGraduationABC}
+                      arrowsOutside={sloterdijkCarouselUsesOutsideArrows || isKlimaatSchema || isRenders || isGraduationABC || isGraduationTopThreeCarousel}
                       slideAspectClassName={isKlimaatSchema ? "aspect-[3/1]" : undefined}
                       hideArrowsOnMobile={isMolenhofSwipeCarousel}
                       compactPagination={isMolenhofSwipeCarousel}
