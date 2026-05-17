@@ -486,29 +486,7 @@ export const projects: Project[] = [
     ],
  
   },
-  {
-    id: "7",
-    title: "VILLA 10A",
-    slug: "street-stories",
-    description: "Momenten uit het dagelijks leven op straat, vol emotie en authenticiteit.",
-    year: "2023",
-    category: "Street",
-    info: {
-      jaar: "2023",
-      programma: "Street",
-      locatie: "",
-      course: "",
-      studietijd: "",
-      cijfer: "",
-    },
-    thumbnail: new URL('../../images/10a.webp', import.meta.url).href,
-    images: [
-      { src: new URL('../../images/10a.webp', import.meta.url).href, alt: "Straat 1" },
-      { src: "https://images.unsplash.com/photo-1517732306149-e8f829eb588a?w=1200&q=80", alt: "Straat 2" },
-      { src: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80", alt: "Straat 3" },
-    ],
-  },
-
+  
 ];
 
 // ===========================================
