@@ -369,7 +369,7 @@ const Project = () => {
                 typeof firstImageSrc === "string" &&
                 firstImageSrc.toLowerCase().includes("molenhof/a1");
               const isTimberTunesCarouselGroup =
-                project.slug === "Timbertunes" &&
+                project.slug === "timbertunes" &&
                 Array.isArray(image.src) &&
                 typeof firstImageSrc === "string" &&
                 (firstImageSrc.includes("ttklimaatz") || firstImageSrc.includes("detail1"));
@@ -547,7 +547,7 @@ const Project = () => {
                     : isBeganeEerste
                       ? "w-full md:w-[85%] md:mx-auto"
                       : isDetails
-                          ? (project.slug === "Timbertunes" && useMobileImageLayout ? "w-full" : "w-[85%] mx-auto")
+                          ? (project.slug === "timbertunes" && useMobileImageLayout ? "w-full" : "w-[85%] mx-auto")
                         : isRenders
                           ? "w-[85%] mx-auto"
                           : image.width === "half"
