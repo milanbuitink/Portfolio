@@ -444,7 +444,7 @@ export const projects: Project[] = [
 
   {
     id: "6",
-    title: "GRADUATION TUD",
+    title: "GRADUATION TU DELFT",
     slug: "graduation",
     description: "Experimentele fotografie die de grenzen tussen realiteit en abstractie verkent.",
     year: "2023",
@@ -452,6 +452,15 @@ export const projects: Project[] = [
     subtext: [
       "Dit afstudeerproject onderzoekt de wisselwerking tussen beeld, compositie en abstractie. De serie is opgezet als een visuele studie waarin perspectief, ritme en contrast samen een eigen atmosferische logica vormen.",
       "Bij de selectie en ordening van de beelden heb ik gezocht naar een reeks die inhoudelijk en visueel op elkaar reageert. Zo ontstaat een portfolio-onderdeel dat niet alleen losse beelden toont, maar ook de samenhang binnen het project laat zien.",
+      "Dit project maakt deel uit van een groter stedenbouwkundig masterplan waarin het concept van bouwmaterialen als grondstoffen een centrale rol speelt. Binnen dit masterplan wordt het landschap van Midden-Delfland benaderd als een productief systeem dat materialen kan leveren voor de gebouwde omgeving. Terwijl het masterplan zich richt op de ontwikkeling van nieuwe materiaalstromen, neemt dit project een complementaire positie in door te onderzoeken hoe bestaande bouwmaterialen en constructies zo maximaal mogelijk kunnen worden hergebruikt.",
+
+      "In plaats van een gebouw volledig op te trekken uit nieuw geproduceerde materialen, vertrekt het ontwerp vanuit de bestaande industriële hal. De fundering, de beganegrondvloer en de staalconstructie blijven behouden en vormen de basis voor de verdere ontwikkeling. Boven op deze structuur worden nieuwe bouwvolumes toegevoegd met behulp van hergebruikte stalen elementen afkomstig uit donorconstructies, gecombineerd met lichte houten vloeren en biobased isolatiematerialen. Waar mogelijk worden ook gevelelementen en aanvullende bouwonderdelen samengesteld uit hergebruikte materialen uit de directe omgeving.",
+
+      "Deze benadering sluit direct aan bij principes van duurzaamheid en circulair bouwen. Door bestaande constructieve elementen te behouden, blijft de opgeslagen embodied energy van het gebouw behouden en wordt de vraag naar nieuwe grondstoffen aanzienlijk verminderd. Daarnaast richt het project zich op demontabel bouwen, waardoor het gebouw in de toekomst kan worden aangepast, gedemonteerd en opnieuw gebruikt. Op deze manier wordt het gebouw onderdeel van een voortdurende materiaalkringloop in plaats van een eindproduct.",
+
+      "Hoewel het project is ontwikkeld voor twee gebouwen op één locatie, reikt de ambitie verder dan deze specifieke plek. Het voorgestelde bouwsysteem en de gehanteerde ontwerpprincipes zijn niet locatiegebonden en kunnen worden toegepast op vergelijkbare industriële structuren in Rotterdam en elders. Industriële gebouwen met robuuste draagconstructies komen wereldwijd voor en vormen een grote, vaak onderbenutte bron van bouwmaterialen. Het concept van maximaal hergebruik en demontabel bouwen heeft daarom het potentieel om bij te dragen aan een bredere transitie binnen de bouwsector, waarin gebouwen worden beschouwd als tijdelijke configuraties van materialen die continu opnieuw kunnen worden ingezet. In de toekomst zal deze benadering steeds belangrijker worden om de milieubelasting te verminderen en in te spelen op de toenemende schaarste aan grondstoffen.",
+
+      "Een belangrijk aspect van het ontwerp is de integratie van collectieve ruimten die sociale interactie stimuleren en de algehele woonkwaliteit verbeteren. Centraal in het project bevindt zich een grote gemeenschappelijke daktuin, gesitueerd boven het parkeerniveau. Alle appartementen zijn rondom deze ruimte georganiseerd, waardoor deze functioneert als het sociale hart van het gebouw. De daktuin biedt ruimte voor ontmoeting, ontspanning en informele activiteiten.",
     ],
     info: {
       jaar: "2026",
@@ -461,23 +470,50 @@ export const projects: Project[] = [
       studietijd: "30 weken",
       cijfer: "n.t.b.",
     },
-    thumbnail: new URL('../../images/graduationaxo.webp', import.meta.url).href,
+    thumbnail: new URL('../../images/graduation/graduationaxo.webp', import.meta.url).href,
     images: [
-      { src: new URL('../../images/graduationaxo.png', import.meta.url).href , alt: "Abstract 1" },
-      {
-        src: [
-          new URL('../../images/graduation/1.png', import.meta.url).href,
-          new URL('../../images/graduation/2.png', import.meta.url).href,
-          new URL('../../images/graduation/3.png', import.meta.url).href,
-        ],
-        alt: "Proto 1 t/m 3",
-        captions: [""],
-      },
+      { src: new URL('../../images/graduation/graduationaxo.webp', import.meta.url).href , alt: "Abstract 1" },
+
       {
         src: [
           new URL('../../images/graduation/a.png', import.meta.url).href,
           new URL('../../images/graduation/b.png', import.meta.url).href,
           new URL('../../images/graduation/c.png', import.meta.url).href,
+          new URL('../../images/graduation/d.png', import.meta.url).href,
+          new URL('../../images/graduation/e.png', import.meta.url).href,
+          new URL('../../images/graduation/f.png', import.meta.url).href,
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: [""],
+      },
+{
+        src: [
+          new URL('../../images/graduation/a1.png', import.meta.url).href,
+          new URL('../../images/graduation/a2.png', import.meta.url).href,
+          new URL('../../images/graduation/a3.png', import.meta.url).href,
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: [""],
+      },
+
+{
+        src: [
+          new URL('../../images/graduation/b1.png', import.meta.url).href,
+          new URL('../../images/graduation/b2.png', import.meta.url).href,
+          new URL('../../images/graduation/b3.png', import.meta.url).href,
+          new URL('../../images/graduation/b4.png', import.meta.url).href,
+          new URL('../../images/graduation/b5.png', import.meta.url).href,
+          new URL('../../images/graduation/b6.png', import.meta.url).href,
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: [""],
+      },
+
+      {
+        src: [
+          new URL('../../images/graduation/1.png', import.meta.url).href,
+          new URL('../../images/graduation/2.png', import.meta.url).href,
+          new URL('../../images/graduation/3.png', import.meta.url).href,
         ],
         alt: "Proto 1 t/m 3",
         captions: [""],
