@@ -51,6 +51,34 @@ const About = () => {
                 ))}
               </div>
 
+              {/* Softwarevaardigheden */}
+              <div className="mb-12">
+                <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Softwarevaardigheden</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-sm font-medium mb-2">Professioneel</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {['Archicad', 'Adobe Photoshop', 'Lumion'].map((s) => (
+                        <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm font-medium mb-2">Gevorderd</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {['SketchUp', 'Adobe InDesign', 'Twinmotion', 'AutoCAD', 'Autodesk Inventor'].map((s) => (
+                        <span key={s} className="inline-block px-3 py-1 bg-muted text-[0.8rem] text-muted-foreground rounded-full">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               
 
               {/* Clients */}
