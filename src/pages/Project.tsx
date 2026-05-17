@@ -378,6 +378,7 @@ const Project = () => {
                 useMobileImageLayout &&
                 Array.isArray(image.src) &&
                 project.slug !== MOLENHOF_SLUG &&
+                project.slug !== "graduation" &&
                 !isTimberTunesCarouselGroup &&
                 !isMolenhofSequenceInData &&
                 !isMolenhofRendersInData &&
