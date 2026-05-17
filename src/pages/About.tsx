@@ -75,10 +75,10 @@ const About = () => {
               </div>
 
               {/* Softwarevaardigheden */}
-              <div className="mb-12 mt-auto">
+              <div className="mb-12 mt-8 lg:mt-10 max-w-[560px] ml-auto">
                 <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Softwarevaardigheden</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8">
+                  <div className="min-w-0">
                     <h3 className="text-sm font-medium mb-2">Professioneel</h3>
                     <div className="flex flex-wrap gap-2">
                       {['Archicad', 'Adobe Photoshop', 'Lumion'].map((s) => (
@@ -89,7 +89,7 @@ const About = () => {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="text-sm font-medium mb-2">Gevorderd</h3>
                     <div className="flex flex-wrap gap-2">
                       {['SketchUp', 'Adobe InDesign', 'Twinmotion', 'AutoCAD', 'Autodesk Inventor'].map((s) => (
