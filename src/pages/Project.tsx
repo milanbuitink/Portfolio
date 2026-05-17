@@ -623,16 +623,19 @@ const Project = () => {
                         alt: image.alt,
                         caption: image.captions?.[slideIndex] ?? image.caption,
                       }))}
-                      className={
+                      className={[
                         sloterdijkCarouselIsSmaller || thesisCarouselIsSmaller
                           ? thesisCarouselIsSmaller
                             ? "md:w-full md:max-w-[1100px] md:mx-auto"
                             : "md:w-full md:max-w-[980px] md:mx-auto"
-                          : "md:w-full md:max-w-[1180px] md:mx-auto"
-                      }
+                          : "md:w-full md:max-w-[1180px] md:mx-auto",
+                        isGraduationABC ? "md:px-20" : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
                       showCaptions={thesisCarouselIsSmaller ? false : !isRenders}
                       tightFooter={isKlimaatSchema}
-                      arrowsOutside={sloterdijkCarouselUsesOutsideArrows || isKlimaatSchema || isRenders}
+                      arrowsOutside={sloterdijkCarouselUsesOutsideArrows || isKlimaatSchema || isRenders || isGraduationABC}
                       slideAspectClassName={isKlimaatSchema ? "aspect-[3/1]" : undefined}
                       hideArrowsOnMobile={isMolenhofSwipeCarousel}
                       compactPagination={isMolenhofSwipeCarousel}
