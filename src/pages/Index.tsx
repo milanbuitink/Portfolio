@@ -3,6 +3,7 @@ import HeroLoader from "@/components/HeroLoader";
 import { Link } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { siteConfig } from "@/data/siteConfig";
 
 let hasPlayedHomeLoader = false;
 
@@ -71,19 +72,19 @@ const Index = () => {
               to="/project"
               className="block px-3 py-2 text-xs md:text-sm font-semibold tracking-widest uppercase hover:opacity-60 transition-opacity duration-300"
             >
-              Work
+              {siteConfig.navigation.work}
             </Link>
             <Link
               to="/archive"
               className="block px-3 py-2 text-xs md:text-sm font-semibold tracking-widest uppercase hover:opacity-60 transition-opacity duration-300"
             >
-              Archive
+              {siteConfig.navigation.archive}
             </Link>
             <Link
               to="/about"
               className="block px-3 py-2 text-xs md:text-sm font-semibold tracking-widest uppercase hover:opacity-60 transition-opacity duration-300"
             >
-              About
+              {siteConfig.navigation.about}
             </Link>
           </nav>
         </main>

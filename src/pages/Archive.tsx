@@ -5,6 +5,7 @@ import OptimizedImage from "@/components/OptimizedImage";
 import { getBlurPlaceholder } from "@/lib/blur-utils";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/data/siteConfig";
 
 const Archive = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -18,10 +19,10 @@ const Archive = () => {
           {/* Header */}
           <div className="mb-12 md:mb-16">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight">
-              Archive
+              {siteConfig.navigation.archive}
             </h1>
             <p className="text-[0.72rem] text-muted-foreground mt-4">
-              {projects.length} Projects
+              {projects.length} projecten
             </p>
           </div>
 

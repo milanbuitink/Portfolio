@@ -12,8 +12,9 @@ export const siteConfig = {
   // NAVIGATIE LINKS
   // ===========================================
   navigation: {
-    archive: "Archive",
-    about: "About",
+    work: "Projecten",
+    archive: "Archief",
+    about: "Over",
   },
 
   // ===========================================
