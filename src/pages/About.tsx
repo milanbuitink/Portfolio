@@ -105,6 +105,16 @@ const About = () => {
                       {about.contact.phone}
                     </a>
                   )}
+                  {about.contact.linkedin && (
+                    <a
+                      href={about.contact.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground hover:opacity-60 transition-opacity duration-300"
+                    >
+                      LinkedIn
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
