@@ -44,7 +44,7 @@ export const zoomable = (image: ProjectImage): ProjectImage => ({
 // JOUW PROJECTEN - Voeg hier je projecten toe
 // ===========================================
 
-export const projects: Project[] = [
+const projectList: Project[] = [
   {
   id: "1",
     title: "NIEUWE MOLENHOF",
@@ -609,6 +609,8 @@ zoomable({
   },
   
 ];
+
+export const projects: Project[] = [...projectList].reverse();
 
 // ===========================================
 // HOVER POSITIES - Pas hier de afbeelding-posities aan voor de homepage
