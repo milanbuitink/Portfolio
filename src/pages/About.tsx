@@ -81,17 +81,7 @@ const About = () => {
 
               
 
-              {/* Clients */}
-              {about.clients && about.clients.length > 0 && (
-                <div className="mb-16">
-                  <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
-                    Selected Clients
-                  </h2>
-                  <p className="text-[0.72rem] text-muted-foreground">
-                    {about.clients.join(" · ")}
-                  </p>
-                </div>
-              )}
+
 
               {/* Werkervaring & Opleidingen are shown below as two columns */}
 

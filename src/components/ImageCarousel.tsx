@@ -9,11 +9,14 @@ interface ImageCarouselProps {
   showCaptions?: boolean;
   tightFooter?: boolean;
   arrowsOutside?: boolean;
+  previousArrowClassName?: string;
+  nextArrowClassName?: string;
   slideAspectClassName?: string;
   hideArrowsOnMobile?: boolean;
   mobileSwipeHint?: string;
   hidePagination?: boolean;
   compactPagination?: boolean;
+  onSlideClick?: (index: number) => void;
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({
@@ -22,11 +25,14 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   showCaptions = true,
   tightFooter = false,
   arrowsOutside = false,
+  previousArrowClassName,
+  nextArrowClassName,
   slideAspectClassName,
   hideArrowsOnMobile = true,
   mobileSwipeHint,
   hidePagination = false,
   compactPagination = true,
+  onSlideClick,
 }) => {
   // Enforce site-wide behavior: always hide arrows on mobile and always use compact (max 5) pagination
   const effectiveHideArrowsOnMobile = true;
@@ -144,7 +150,10 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
           <CarouselContent>
             {images.map((image, index) => (
               <CarouselItem key={index}>
-                <div className={`${aspectClass} w-full overflow-hidden bg-background flex items-center justify-center ${slidePaddingClass}`}>
+                <div
+                  className={`${aspectClass} w-full overflow-hidden bg-background flex items-center justify-center ${slidePaddingClass} ${onSlideClick ? "cursor-zoom-in" : ""}`.trim()}
+                  onClick={onSlideClick ? () => onSlideClick(index) : undefined}
+                >
                   <OptimizedImage
                     src={image.src}
                     alt={image.alt}
@@ -162,8 +171,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
             className={
               [
                 arrowsOutside
-                  ? "absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-none border-0 bg-transparent shadow-none text-foreground/80 hover:text-foreground hover:bg-transparent"
-                  : "absolute left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-none border-0 bg-transparent shadow-none text-foreground/80 hover:text-foreground hover:bg-transparent",
+                  ? `absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-none border-0 bg-transparent shadow-none text-foreground/80 hover:text-foreground hover:bg-transparent ${previousArrowClassName ?? ""}`
+                  : `absolute left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-none border-0 bg-transparent shadow-none text-foreground/80 hover:text-foreground hover:bg-transparent ${previousArrowClassName ?? ""}`,
                 effectiveHideArrowsOnMobile ? "hidden md:flex" : "flex",
               ].join(" ")
             }
@@ -173,8 +182,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
             className={
               [
                 arrowsOutside
-                  ? "absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-none border-0 bg-transparent shadow-none text-foreground/80 hover:text-foreground hover:bg-transparent"
-                  : "absolute right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-none border-0 bg-transparent shadow-none text-foreground/80 hover:text-foreground hover:bg-transparent",
+                  ? `absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-none border-0 bg-transparent shadow-none text-foreground/80 hover:text-foreground hover:bg-transparent ${nextArrowClassName ?? ""}`
+                  : `absolute right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-none border-0 bg-transparent shadow-none text-foreground/80 hover:text-foreground hover:bg-transparent ${nextArrowClassName ?? ""}`,
                 effectiveHideArrowsOnMobile ? "hidden md:flex" : "flex",
               ].join(" ")
             }

@@ -30,7 +30,16 @@ const getMobileOptimizedMolenhofSrc = (src: string, isMobile: boolean, slug: str
   return src;
 };
 
-type ZoomImageState = { src: string | string[]; alt: string };
+type ZoomImageState = { src: string | string[]; alt: string; index?: number };
+
+const getDesktopScaleStyle = (desktopScale?: number, disableOnMobile = false) => {
+  if (disableOnMobile || !desktopScale || desktopScale === 100) return undefined;
+
+  return {
+    transform: `scale(${desktopScale / 100})`,
+    transformOrigin: "center center",
+  };
+};
 
 const computeSafeMaxZoom = (naturalWidth: number, naturalHeight: number) => {
   const longestSide = Math.max(naturalWidth, naturalHeight);
@@ -47,6 +56,9 @@ const DesktopZoomModal = ({
   zoomImage: ZoomImageState;
   onClose: () => void;
 }) => {
+  const isCarouselZoom = Array.isArray(zoomImage.src);
+  const carouselImages = isCarouselZoom ? zoomImage.src : [];
+  const [currentCarouselIndex, setCurrentCarouselIndex] = useState(zoomImage.index ?? 0);
   const [zoomScale, setZoomScale] = useState(1);
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
@@ -54,6 +66,22 @@ const DesktopZoomModal = ({
   const zoomViewportRef = useRef<HTMLDivElement | null>(null);
   const zoomImageRef = useRef<HTMLImageElement | null>(null);
   const panStartRef = useRef({ x: 0, y: 0, offsetX: 0, offsetY: 0 });
+
+  const currentCarouselSrc = isCarouselZoom ? (carouselImages[currentCarouselIndex] ?? carouselImages[0]) : undefined;
+  const currentSingleSrc = !isCarouselZoom ? (zoomImage.src as string) : undefined;
+
+  const resetZoomView = () => {
+    setZoomScale(1);
+    setPanOffset({ x: 0, y: 0 });
+    setIsPanning(false);
+  };
+
+  const goToCarouselIndex = (nextIndex: number) => {
+    if (!carouselImages.length) return;
+    const normalizedIndex = (nextIndex + carouselImages.length) % carouselImages.length;
+    setCurrentCarouselIndex(normalizedIndex);
+    resetZoomView();
+  };
 
   const clampPan = (x: number, y: number, scale: number) => {
     const viewport = zoomViewportRef.current;
@@ -130,6 +158,11 @@ const DesktopZoomModal = ({
   };
 
   useEffect(() => {
+    setCurrentCarouselIndex(zoomImage.index ?? 0);
+    resetZoomView();
+  }, [zoomImage]);
+
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
     };
@@ -163,6 +196,25 @@ const DesktopZoomModal = ({
     };
   }, [onClose]);
 
+  useEffect(() => {
+    if (!isCarouselZoom) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        goToCarouselIndex(currentCarouselIndex - 1);
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        goToCarouselIndex(currentCarouselIndex + 1);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [currentCarouselIndex, isCarouselZoom]);
+
   return (
     <div className="fixed inset-0 z-[120] hidden md:flex items-center justify-center bg-black/70 p-6" onClick={onClose}>
       <div
@@ -182,8 +234,61 @@ const DesktopZoomModal = ({
           <X className="w-9 h-9" />
         </button>
 
-        {Array.isArray(zoomImage.src) ? (
-          <ImageCarousel images={zoomImage.src.map(src => ({ src, alt: zoomImage.alt }))} className="h-full" />
+        {isCarouselZoom ? (
+          <div className="relative h-full w-full overflow-hidden flex items-center justify-center">
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                goToCarouselIndex(currentCarouselIndex - 1);
+              }}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex h-11 w-11 items-center justify-center border-0 bg-transparent text-white hover:text-neutral-300"
+              aria-label="Vorige afbeelding"
+            >
+              <ArrowLeft className="h-8 w-8" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                goToCarouselIndex(currentCarouselIndex + 1);
+              }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex h-11 w-11 items-center justify-center border-0 bg-transparent text-white hover:text-neutral-300"
+              aria-label="Volgende afbeelding"
+            >
+              <ArrowRight className="h-8 w-8" />
+            </button>
+
+            <div
+              ref={zoomViewportRef}
+              className={`hide-scrollbar h-full w-full overflow-hidden flex items-center justify-center ${zoomScale > 1 ? (isPanning ? "cursor-grabbing" : "cursor-grab") : "cursor-zoom-in"}`}
+              onWheel={handleZoomWheel}
+              onMouseDown={handlePanStart}
+              onMouseMove={handlePanMove}
+              onMouseUp={handlePanEnd}
+              onMouseLeave={handlePanEnd}
+              onClick={() => {
+                if (zoomScale === 1) {
+                  setZoomScale(Math.min(2, maxZoomScale));
+                }
+              }}
+            >
+              <img
+                ref={zoomImageRef}
+                src={currentCarouselSrc ?? ""}
+                alt={zoomImage.alt}
+                onLoad={handleZoomImageLoaded}
+                className="project-image-quality block max-w-full max-h-full w-auto h-auto object-contain select-none"
+                style={{
+                  transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${zoomScale})`,
+                  transformOrigin: "center center",
+                  transition: isPanning ? "none" : "transform 120ms ease-out",
+                }}
+                draggable={false}
+              />
+            </div>
+          </div>
         ) : (
           <div
             ref={zoomViewportRef}
@@ -196,7 +301,7 @@ const DesktopZoomModal = ({
           >
             <img
               ref={zoomImageRef}
-              src={zoomImage.src}
+              src={currentSingleSrc ?? ""}
               alt={zoomImage.alt}
               onLoad={handleZoomImageLoaded}
               className="project-image-quality block max-w-full max-h-full w-auto h-auto object-contain select-none"
@@ -231,6 +336,11 @@ const Project = () => {
     setZoomImage({ src, alt });
   };
 
+  const openZoomAtIndex = (src: string | string[], alt: string, index: number) => {
+    if (!isDesktopViewport()) return;
+    setZoomImage({ src, alt, index });
+  };
+
   const closeZoom = () => {
     setZoomImage(null);
   };
@@ -262,6 +372,9 @@ const Project = () => {
     : project.thumbnail;
   const heroZoomable = Boolean(heroImage && heroImage.zoomable && !Array.isArray(heroImage.src));
   const heroUsesContainFit = project.slug === "sloterdijk";
+  const heroDesktopScaleStyle = heroImage && !Array.isArray(heroImage.src)
+    ? getDesktopScaleStyle(heroImage.desktopScale, useMobileImageLayout)
+    : undefined;
 
   return (
     <div className="min-h-screen bg-background">
@@ -296,6 +409,7 @@ const Project = () => {
               containerClassName="absolute inset-0"
               blurDataURL={getBlurPlaceholder(heroSrc)}
               priority={true}
+              style={heroDesktopScaleStyle}
             />
           </div>
         </section>
@@ -379,6 +493,7 @@ const Project = () => {
                 Array.isArray(image.src) &&
                 project.slug !== MOLENHOF_SLUG &&
                 project.slug !== "graduation" &&
+                project.slug !== "viaroma" &&
                 !isTimberTunesCarouselGroup &&
                 !isMolenhofSequenceInData &&
                 !isMolenhofRendersInData &&
@@ -389,6 +504,7 @@ const Project = () => {
                   ...image,
                   src,
                   caption: image.captions?.[slideIndex] ?? image.caption,
+                  desktopScale: image.desktopScale,
                   __key: `${imageIndex}-${slideIndex}`,
                   __fromCarousel: true,
                 }));
@@ -404,7 +520,7 @@ const Project = () => {
             });
 
             return galleryItems.map((image, index) => {
-            const isZoomable = Boolean(image.zoomable && !Array.isArray(image.src));
+            const isZoomable = Boolean(image.zoomable);
             const isCarousel = Array.isArray(image.src);
             const frameClassName = `project-image-frame relative w-full ${isCarousel ? "" : "overflow-hidden"} ${isZoomable ? "cursor-pointer" : ""}`.trim();
             const firstSrc = Array.isArray(image.src) ? image.src[0] : image.src;
@@ -478,6 +594,11 @@ const Project = () => {
               Array.isArray(image.src) &&
               typeof firstSrc === "string" &&
               firstSrc.toLowerCase().includes("graduation/a");
+            const isGraduationSCarousel =
+              project.slug === "graduation" &&
+              Array.isArray(image.src) &&
+              typeof firstSrc === "string" &&
+              firstSrc.toLowerCase().includes("graduation/s1");
             const isGraduationTopThreeCarousel =
               project.slug === "graduation" &&
               Array.isArray(image.src) &&
@@ -524,9 +645,11 @@ const Project = () => {
               : isMolenhofRenders
                 ? "w-[85%] md:w-[85%] mx-auto"
               : isGraduationTopThreeCarousel
-                ? "w-full md:w-full md:max-w-[1280px] md:mx-auto"
+                ? "w-full md:w-[70%] md:mx-auto"
               : isGraduationABC
-                ? "w-[50%] md:w-[50%] mx-auto"
+                ? "w-full md:w-[80%] md:mx-auto"
+              : isGraduationSCarousel
+                ? "w-full md:w-[70%] md:mx-auto"
               : isMolenhofDSequence
                 ? "w-full md:w-[85%] md:mx-auto"
               : isMolenhofSequence || isMolenhofASequence
@@ -575,7 +698,7 @@ const Project = () => {
                   return (
                 <div
                   className={frameClassName}
-                  onClick={isZoomable ? () => openZoom(image.src as string, image.alt) : undefined}
+                  onClick={!isCarousel && isZoomable ? () => openZoom(image.src as string, image.alt) : undefined}
                 >
                   {Array.isArray(renderedImageSrc) ? (
                     (() => {
@@ -630,19 +753,27 @@ const Project = () => {
                         alt: image.alt,
                         caption: image.captions?.[slideIndex] ?? image.caption,
                       }))}
+                      onSlideClick={image.zoomable ? (slideIndex) => openZoomAtIndex(renderedImageSrc, image.alt, slideIndex) : undefined}
                       className={[
                         sloterdijkCarouselIsSmaller || thesisCarouselIsSmaller
                           ? thesisCarouselIsSmaller
                             ? "md:w-full md:max-w-[1100px] md:mx-auto"
                             : "md:w-full md:max-w-[980px] md:mx-auto"
                           : "md:w-full md:max-w-[1180px] md:mx-auto",
-                        (isGraduationABC || isGraduationTopThreeCarousel) ? "md:px-20" : "",
+                        isGraduationABC
+                          ? "md:px-0"
+                          : (isGraduationTopThreeCarousel || isGraduationSCarousel)
+                            ? "md:px-20"
+                            : "",
+                        isGraduationTopThreeCarousel ? "md:px-36 lg:px-48" : "",
                       ]
                         .filter(Boolean)
                         .join(" ")}
                       showCaptions={thesisCarouselIsSmaller ? false : !isRenders}
                       tightFooter={isKlimaatSchema}
-                      arrowsOutside={sloterdijkCarouselUsesOutsideArrows || isKlimaatSchema || isRenders || isGraduationABC || isGraduationTopThreeCarousel}
+                      arrowsOutside={sloterdijkCarouselUsesOutsideArrows || isKlimaatSchema || isRenders || isGraduationABC || isGraduationTopThreeCarousel || isGraduationSCarousel}
+                      previousArrowClassName={isGraduationTopThreeCarousel ? "md:-left-20 lg:-left-28" : undefined}
+                      nextArrowClassName={isGraduationTopThreeCarousel ? "md:-right-20 lg:-right-28" : undefined}
                       slideAspectClassName={isKlimaatSchema ? "aspect-[3/1]" : undefined}
                       hideArrowsOnMobile={isMolenhofSwipeCarousel}
                       compactPagination={isMolenhofSwipeCarousel}
@@ -668,6 +799,7 @@ const Project = () => {
                             )
                       }
                       blurDataURL={getBlurPlaceholder(renderedImageSrc as string)}
+                      style={getDesktopScaleStyle(image.desktopScale, useMobileImageLayout)}
                     />
                   )}
                 </div>
@@ -688,8 +820,15 @@ const Project = () => {
                   }
 
                   if (!image.caption) return null;
+                  const isGraduationLocationImage = typeof firstSrc === "string" && firstSrc.includes("graduation/locatie");
                   return (
-                    <p className="mt-4 text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground">
+                    <p
+                      className={
+                        isGraduationLocationImage
+                          ? "mt-4 text-right text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground"
+                          : "mt-4 text-[0.81rem] md:text-[0.9rem] font-light leading-relaxed text-muted-foreground"
+                      }
+                    >
                       {image.caption}
                     </p>
                   );

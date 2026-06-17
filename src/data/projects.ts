@@ -9,6 +9,7 @@ export interface ProjectImage {
   caption?: string;
   captions?: string[];
   width?: "full" | "half";
+  desktopScale?: number;
 }
 
 export interface ProjectInfo {
@@ -266,7 +267,8 @@ export const projects: Project[] = [
       { src: new URL('../../images/sloterdijk/sloterdijkaxo.png', import.meta.url).href, alt: "Sloterdijk" },
       { src: new URL('../../images/sloterdijk/principles.webp', import.meta.url).href, alt: "Stadsgezicht" },
       { src: new URL('../../images/sloterdijk/dwellingtypes.webp', import.meta.url).href, alt: "Stadsgezicht" },
-       {
+
+zoomable({
         src: [
           new URL('../../images/sloterdijk/begane.webp', import.meta.url).href,
           new URL('../../images/sloterdijk/25.webp', import.meta.url).href,
@@ -275,20 +277,23 @@ export const projects: Project[] = [
         ],
         alt: "Sloterdijk",
         captions: ["Begane grond", "2e - 5e verdieping", "6e - 8e verdieping", "9e - 11e verdieping"],
-      },
+      }),
 
-      {
+zoomable({
         src: [
           new URL('../../images/sloterdijk/gallery.webp', import.meta.url).href,
           new URL('../../images/sloterdijk/corridor.webp', import.meta.url).href,
           new URL('../../images/sloterdijk/maisonette.webp', import.meta.url).href,
+
         ],
-        alt: "Sloterdijk",
+        alt: "Proto 1 t/m 3",
         captions: ["Gallery", "Corridor", "Maisonette"],
-      },
+      }),     
+
    { src: new URL('../../images/sloterdijk/klimaat.jpg', import.meta.url).href, alt: "Stadsgezicht" },
       { src: new URL('../../images/sloterdijk/fragment.webp', import.meta.url).href, alt: "Stadsgezicht" },
-         {
+         
+   zoomable({       
         src: [
           new URL('../../images/sloterdijk/detail 1.webp', import.meta.url).href,
           new URL('../../images/sloterdijk/detail 2.webp', import.meta.url).href,
@@ -296,7 +301,7 @@ export const projects: Project[] = [
         ],
         alt: "Sloterdijk",
         captions: ["Detail 1", "Detail 2", "Detail 3"],
-      },
+      }),
 
         {
           src: [
@@ -406,8 +411,8 @@ export const projects: Project[] = [
     year: "2025",
     category: "MSc3",
     subtext: [
-      "Voor deze thesis heb ik onderzocht hoe een architectonische ingreep zich kan verhouden tot een bestaande stedelijke structuur. De opgave vroeg om een helder concept dat ruimtelijke kwaliteit koppelt aan een zorgvuldig gekozen positionering in de context.",
-      "In de uitwerking lag de nadruk op het formuleren van een sterke hoofdopzet, waarin programma, routing en materialisatie elkaar ondersteunen. Het project combineert analyse en ontwerp tot een samenhangend voorstel dat zowel conceptueel als ruimtelijk overtuigt.",
+      "Deze historische analyse onderzoekt de transformatie van de Via Roma in Turijn en de manier waarop architectuur en stedenbouw werden ingezet als instrumenten van politieke macht. Door de ontwikkeling van de straat te volgen vanaf de aanleg onder het Huis van Savoye in de zeventiende eeuw tot de grootschalige reconstructie onder het fascistische regime in de jaren dertig, wordt zichtbaar hoe dezelfde stedelijke ruimte verschillende ideologische betekenissen kan dragen.",
+      "Het onderzoek laat zien dat de transformatie van Via Roma niet alleen een architectonische of stedenbouwkundige ingreep was, maar ook een middel om identiteit, autoriteit en nationale ambities zichtbaar te maken in de openbare ruimte. Daarmee toont het project hoe architectuur kan functioneren als een krachtig instrument voor politieke representatie en hoe stedelijke ruimtes voortdurend opnieuw worden geïnterpreteerd door opeenvolgende machtsstructuren.",
     ],
     info: {
       jaar: "2025",
@@ -451,15 +456,10 @@ export const projects: Project[] = [
     category: "MSc4",
     subtext: [
       
-      "Dit project maakt deel uit van een groter stedenbouwkundig masterplan waarin het concept van bouwmaterialen als grondstoffen een centrale rol speelt. Binnen dit masterplan wordt het landschap van Midden-Delfland benaderd als een productief systeem dat materialen kan leveren voor de gebouwde omgeving. Terwijl het masterplan zich richt op de ontwikkeling van nieuwe materiaalstromen, neemt dit project een complementaire positie in door te onderzoeken hoe bestaande bouwmaterialen en constructies zo maximaal mogelijk kunnen worden hergebruikt.",
-
-      "In plaats van een gebouw volledig op te trekken uit nieuw geproduceerde materialen, vertrekt het ontwerp vanuit de bestaande industriële hal. De fundering, de beganegrondvloer en de staalconstructie blijven behouden en vormen de basis voor de verdere ontwikkeling. Boven op deze structuur worden nieuwe bouwvolumes toegevoegd met behulp van hergebruikte stalen elementen afkomstig uit donorconstructies, gecombineerd met lichte houten vloeren en biobased isolatiematerialen. Waar mogelijk worden ook gevelelementen en aanvullende bouwonderdelen samengesteld uit hergebruikte materialen uit de directe omgeving.",
-
-      "Deze benadering sluit direct aan bij principes van duurzaamheid en circulair bouwen. Door bestaande constructieve elementen te behouden, blijft de opgeslagen embodied energy van het gebouw behouden en wordt de vraag naar nieuwe grondstoffen aanzienlijk verminderd. Daarnaast richt het project zich op demontabel bouwen, waardoor het gebouw in de toekomst kan worden aangepast, gedemonteerd en opnieuw gebruikt. Op deze manier wordt het gebouw onderdeel van een voortdurende materiaalkringloop in plaats van een eindproduct.",
-
+      "Dit afstudeerproject onderzoekt hoe bestaande industriële gebouwen kunnen worden ingezet als basis voor nieuwe woonomgevingen. In plaats van sloop vormt de bestaande fundering, beganegrondvloer en staalconstructie het uitgangspunt voor de ontwikkeling van een circulair wooncomplex in Rotterdam. Door deze structuur te behouden en aan te vullen met lichte, modulaire houtbouw wordt de milieubelasting aanzienlijk verminderd, terwijl tegelijkertijd wordt ingespeeld op de groeiende vraag naar woningen.",
+      "Het ontwerp transformeert het voormalige industriële terrein tot een levendige woonomgeving met circa 120 woningen, georganiseerd rondom een collectieve binnentuin en verschillende gedeelde buitenruimtes. De combinatie van structureel hergebruik, circulaire bouwprincipes en flexibele woningtypologieën laat zien hoe bestaande gebouwen kunnen worden aangepast aan veranderende woonbehoeften. Zo ontstaat een toekomstbestendig wooncomplex waarin duurzaamheid, sociale interactie en woonkwaliteit centraal staan.",
       "Hoewel het project is ontwikkeld voor twee gebouwen op één locatie, reikt de ambitie verder dan deze specifieke plek. Het voorgestelde bouwsysteem en de gehanteerde ontwerpprincipes zijn niet locatiegebonden en kunnen worden toegepast op vergelijkbare industriële structuren in Rotterdam en elders. Industriële gebouwen met robuuste draagconstructies komen wereldwijd voor en vormen een grote, vaak onderbenutte bron van bouwmaterialen. Het concept van maximaal hergebruik en demontabel bouwen heeft daarom het potentieel om bij te dragen aan een bredere transitie binnen de bouwsector, waarin gebouwen worden beschouwd als tijdelijke configuraties van materialen die continu opnieuw kunnen worden ingezet. In de toekomst zal deze benadering steeds belangrijker worden om de milieubelasting te verminderen en in te spelen op de toenemende schaarste aan grondstoffen.",
 
-      "Een belangrijk aspect van het ontwerp is de integratie van collectieve ruimten die sociale interactie stimuleren en de algehele woonkwaliteit verbeteren. Centraal in het project bevindt zich een grote gemeenschappelijke daktuin, gesitueerd boven het parkeerniveau. Alle appartementen zijn rondom deze ruimte georganiseerd, waardoor deze functioneert als het sociale hart van het gebouw. De daktuin biedt ruimte voor ontmoeting, ontspanning en informele activiteiten.",
     ],
     info: {
       jaar: "2026",
@@ -469,40 +469,119 @@ export const projects: Project[] = [
       studietijd: "30 weken",
       cijfer: "n.t.b.",
     },
-    thumbnail: new URL('../../images/graduation/graduationaxo.webp', import.meta.url).href,
+    thumbnail: new URL('../../images/graduation/graduationaxo.opt.small.webp', import.meta.url).href,
     images: [
-      { src: new URL('../../images/graduation/graduationaxo.webp', import.meta.url).href , alt: "Abstract 1" },
+      { src: new URL('../../images/graduation/graduationaxo.opt.smooth.webp', import.meta.url).href , alt: "Abstract 1" },
+
+{ src: new URL('../../images/graduation/locatie.webp', import.meta.url).href , alt: "Abstract 1", width: "half", caption: "Huidige situatie (voor transformatie)", },
+      {
+        src: [
+          new URL('../../images/graduation/a.webp', import.meta.url).href,
+          new URL('../../images/graduation/b.webp', import.meta.url).href,
+          new URL('../../images/graduation/c.webp', import.meta.url).href,
+          new URL('../../images/graduation/d.webp', import.meta.url).href,
+          new URL('../../images/graduation/e.webp', import.meta.url).href,
+          new URL('../../images/graduation/f.webp', import.meta.url).href,
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: [""],
+      },
+
+      zoomable({ 
+        src: [
+          new URL('../../images/graduation/plg0.webp', import.meta.url).href,
+          new URL('../../images/graduation/plg1.webp', import.meta.url).href,
+          new URL('../../images/graduation/plg2.webp', import.meta.url).href,
+          new URL('../../images/graduation/plg3.webp', import.meta.url).href,
+          new URL('../../images/graduation/plg4.webp', import.meta.url).href,
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: ["Begane grond", "Eerste verdieping", "Tweede verdieping", "Derde verdieping", "Dakaanzicht"],
+      }),      
+
+zoomable({
+        src: [
+          new URL('../../images/graduation/sec1.webp', import.meta.url).href,
+          new URL('../../images/graduation/sec2.webp', import.meta.url).href,
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: [""],
+      }),     
+      
+      zoomable({
+        src: new URL('../../images/graduation/co2.webp', import.meta.url).href,
+        alt: "Sloterdijk",
+        width: "half",
+      }),     
+
+{
+        src: [
+          new URL('../../images/graduation/s1.webp', import.meta.url).href,
+          new URL('../../images/graduation/s2.webp', import.meta.url).href,
+          new URL('../../images/graduation/s3.webp', import.meta.url).href,
+          new URL('../../images/graduation/s4.webp', import.meta.url).href,
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: ["Huidige situatie", "Verplaatsing parkeerdek", "Nieuwe situatie", "Nieuwe situatie met optopping"],
+      },
+
+{
+        src: [
+          new URL('../../images/graduation/bt1.webp', import.meta.url).href,
+          new URL('../../images/graduation/bt2.webp', import.meta.url).href,
+          new URL('../../images/graduation/bt3.webp', import.meta.url).href,
+          new URL('../../images/graduation/bt4.webp', import.meta.url).href,
+          new URL('../../images/graduation/bt5.webp', import.meta.url).href,
+          new URL('../../images/graduation/bt6.webp', import.meta.url).href,
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: [""],
+      },
+            zoomable({
+        src: new URL('../../images/graduation/lpvdw.webp', import.meta.url).href,
+        alt: "Sloterdijk",
+        width: "half",
+      }),   
+
+{
+        src: [
+          new URL('../../images/graduation/c01.webp', import.meta.url).href,
+          new URL('../../images/graduation/c05.webp', import.meta.url).href,
+          new URL('../../images/graduation/c06.webp', import.meta.url).href,
+          new URL('../../images/graduation/c02.webp', import.meta.url).href,
+          new URL('../../images/graduation/c03.webp', import.meta.url).href,
+          new URL('../../images/graduation/c04.webp', import.meta.url).href,
+   
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: ["Casco", "3 kamers", "3 kamers", "3 kamers", "3 kamers", "2 kamers"],
+      },
+
+{
+        src: [
+          new URL('../../images/graduation/c11.webp', import.meta.url).href,
+          new URL('../../images/graduation/c12.webp', import.meta.url).href,
+          new URL('../../images/graduation/c13.webp', import.meta.url).href,
+          new URL('../../images/graduation/c14.webp', import.meta.url).href,
+          new URL('../../images/graduation/c15.webp', import.meta.url).href,
+          new URL('../../images/graduation/c16.webp', import.meta.url).href,
+        ],
+        alt: "Proto 1 t/m 3",
+        captions: ["Casco", "1 slaapkamer", "2 slaapkamers", "3 slaapkamers", "2 slaapkamers", "Rolstoel toegankelijk"],
+      },
 
       {
         src: [
-          new URL('../../images/graduation/a.png', import.meta.url).href,
-          new URL('../../images/graduation/b.png', import.meta.url).href,
-          new URL('../../images/graduation/c.png', import.meta.url).href,
-          new URL('../../images/graduation/d.png', import.meta.url).href,
-          new URL('../../images/graduation/e.png', import.meta.url).href,
-          new URL('../../images/graduation/f.png', import.meta.url).href,
-        ],
-        alt: "Proto 1 t/m 3",
-        captions: [""],
-      },
-{
-        src: [
-          new URL('../../images/graduation/a1.png', import.meta.url).href,
-          new URL('../../images/graduation/a2.png', import.meta.url).href,
-          new URL('../../images/graduation/a3.png', import.meta.url).href,
-        ],
-        alt: "Proto 1 t/m 3",
-        captions: [""],
-      },
-
-{
-        src: [
-          new URL('../../images/graduation/b1.png', import.meta.url).href,
-          new URL('../../images/graduation/b2.png', import.meta.url).href,
-          new URL('../../images/graduation/b3.png', import.meta.url).href,
-          new URL('../../images/graduation/b4.png', import.meta.url).href,
-          new URL('../../images/graduation/b5.png', import.meta.url).href,
-          new URL('../../images/graduation/b6.png', import.meta.url).href,
+          new URL('../../images/graduation/DEF1.webp', import.meta.url).href,
+          new URL('../../images/graduation/DEF2.webp', import.meta.url).href,
+          new URL('../../images/graduation/DEF3.webp', import.meta.url).href,
+          new URL('../../images/graduation/DEF4.webp', import.meta.url).href,
+          new URL('../../images/graduation/DEF5.webp', import.meta.url).href,
+          new URL('../../images/graduation/DEF6.webp', import.meta.url).href,
+          new URL('../../images/graduation/DEF7.webp', import.meta.url).href,
+          new URL('../../images/graduation/DEF8.webp', import.meta.url).href,
+          new URL('../../images/graduation/DEF9.webp', import.meta.url).href,
+          new URL('../../images/graduation/DEF10.webp', import.meta.url).href,
         ],
         alt: "Proto 1 t/m 3",
         captions: [""],
@@ -510,10 +589,16 @@ export const projects: Project[] = [
 
       {
         src: [
-          new URL('../../images/graduation/1.png', import.meta.url).href,
-          new URL('../../images/graduation/2.png', import.meta.url).href,
-          new URL('../../images/graduation/3.png', import.meta.url).href,
-          new URL('../../images/graduation/4.png', import.meta.url).href,
+          new URL('../../images/graduation/m1.webp', import.meta.url).href,
+          new URL('../../images/graduation/m2.webp', import.meta.url).href,
+          new URL('../../images/graduation/m3.webp', import.meta.url).href,
+          new URL('../../images/graduation/m4.webp', import.meta.url).href,
+          new URL('../../images/graduation/m5.webp', import.meta.url).href,
+          new URL('../../images/graduation/m6.webp', import.meta.url).href,
+          new URL('../../images/graduation/m7.webp', import.meta.url).href,
+          new URL('../../images/graduation/m8.webp', import.meta.url).href,
+          new URL('../../images/graduation/m9.webp', import.meta.url).href,
+
         ],
         alt: "Proto 1 t/m 3",
         captions: [""],
