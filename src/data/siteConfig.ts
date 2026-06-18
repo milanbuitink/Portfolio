@@ -12,9 +12,8 @@ export const siteConfig = {
   // NAVIGATIE LINKS
   // ===========================================
   navigation: {
-    work: "Projecten",
-    archive: "Archief",
-    about: "Over",
+    archive: "Archive",
+    about: "About",
   },
 
   // ===========================================
@@ -44,27 +43,27 @@ export const siteConfig = {
     workExperience: [
 
       {
-        period: "2019 - 2023",
-        role: "Eerste verkoopmedewerker",
-        company: "Boni Supermarkt, Nijkerk",
-        description: [
+        period: "2025 - 2026",
+        role: "Tekenaar / Werkvoorbereider (5 maanden)",
+        company: "Folkers Toegangstechniek",
   
-        ],
       },
+      {
+        period: "2024",
+        role: "Technisch ontwerper (6 maanden)",
+        company: "AG Nova, Amersfoort",        
+      },
+
       {
         period: "2023",
         role: "Stagiair (6 maanden)",
         company: "AG Nova, Amersfoort",
       },
+
       {
-        period: "2023",
-        role: "Technisch ontwerper (5 maanden)",
-        company: "AG Nova, Amersfoort",
-      },
-      {
-        period: "2025 - 2026",
-        role: "Tekenaar / Werkvoorbereider (5 maanden)",
-        company: "Folkers Toegangstechniek",
+        period: "2019 - 2023",
+        role: "Teamleider",
+        company: "Boni Supermarkt, Nijkerk",
       },
     ],
 
